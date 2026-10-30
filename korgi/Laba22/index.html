@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Казино Слот</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎰 Игровой Автомат 🎰</h1>
+        
+        <div class="balance">
+            <h2>Баланс: <span id="balance">10000000</span> ₽</h2>
+        </div>
+        
+        <div class="slots">
+            <div class="slot" id="slot1">🍒</div>
+            <div class="slot" id="slot2">🍒</div>
+            <div class="slot" id="slot3">🍒</div>
+        </div>
+        
+        <div class="controls">
+            <label for="bet">Ставка:</label>
+            <input type="number" id="bet" min="10" max="1000" value="100">
+            <button id="spinBtn">🎲 Крутить 🎲</button>
+        </div>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="paytable">
+            <h3>Таблица выигрышей:</h3>
+            <ul>
+                <li>🍒🍒🍒 - x2 (выигрыш = ставка × 2)</li>
+                <li>🍋🍋🍋 - x3 (выигрыш = ставка × 3)</li>
+                <li>🍊🍊🍊 - x4 (выигрыш = ставка × 4)</li>
+                <li>🍉🍉🍉 - x5 (выигрыш = ставка × 5)</li>
+                <li>⭐️⭐️⭐️ - x10 (выигрыш = ставка × 10)</li>
+                <li>7️⃣7️⃣7️⃣ - x20 (выигрыш = ставка × 20)</li>
+                <li>🎰🎰🎰 - JACKPOT! (x100)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

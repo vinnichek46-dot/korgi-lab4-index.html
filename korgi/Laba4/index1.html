@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Владислав Винничек — Front-end Developer</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts: Unbounded & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Unbounded:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            topblog: {
+              purple: '#030712',
+              indigo: '#00F0FF',
+              pink: '#00F0FF',
+              lime: '#00F0FF',
+              neon: '#00F0FF',
+              red: '#00F0FF',
+              green: '#00F0FF',
+              cyan: '#00F0FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Unbounded', 'sans-serif'],
+          },
+          animation: {
+            'marquee': 'marquee 25s linear infinite',
+            'gradient-flow': 'gradientFlow 5s ease infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            gradientFlow: {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #030712;
+      color: #F8FAFC;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 240, 255, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(0, 240, 255, 0.04) 0%, transparent 40%);
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Unbounded', sans-serif;
+    }
+
+    /* Электрический градиент для имени */
+    .animated-name-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 50%, #70E4FF 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 6s ease-in-out infinite;
+    }
+
+    /* Подсветка кода */
+    .code-kw { color: #00F0FF; }
+    .code-fn { color: #70E4FF; }
+    .code-str { color: #A5F3A0; }
+    .code-cm { color: #64748B; }
+
+    /* Курсор в терминале */
+    .caret {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: #00F0FF;
+      vertical-align: middle;
+      animation: blink 1s steps(2) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Кастомная полоса прокрутки */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #00F0FF;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-[#00F0FF] selection:text-[#030712]">
+
+  <!-- ================= HEADER (БЕЗ РАМОК) ================= -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-[#030712]/85 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <a href="#" class="flex items-center gap-3">
+        <span class="font-heading font-black text-sm tracking-wider text-[#00F0FF]">
+          ВИННИЧЕК
+        </span>
+        <span class="text-xs font-mono text-slate-400 hidden sm:inline-block">/ FRONT-END</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 font-medium text-xs text-slate-200">
+        <a href="#about" class="hover:text-[#00F0FF] transition-colors">Обо мне</a>
+        
+        
+      </nav>
+
+      <a href="#contact" class="px-6 py-2.5 rounded-full bg-[#00F0FF] text-[#030712] font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#70E4FF] transition-all shadow-lg shadow-[#00F0FF]/25">
+        Связаться
+      </a>
+    </div>
+  </header>
+
+  <main class="pt-28">
+
+    <!-- ================= HERO SECTION (БЕЗ БЛОКОВ) ================= -->
+    <section class="py-16 sm:py-10 px-6 max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Левый текст -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 text-[#00F0FF] font-mono text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-[#00F0FF] animate-pulse"></span>
+            Front-End Developer
+          </div>
+
+          <h1 class="text-4xl sm:text-6xl font-heading font-black leading-tight">
+            <span class="animated-name-gradient">Владислав <br/>Винничек</span>
+          </h1>
+
+          <p class="text-slate-200 text-base sm:text-lg max-w-xl leading-relaxed">
+            Создаю современные веб-интерфейсы с фокусом на скорость, аккуратность и удобство пользователей. Разрабатываю проекты на React, Next.js и TypeScript.
+          </p>
+
+          <div class="pt-4 flex flex-wrap gap-4">
+            <a href="#contact" class="px-8 py-4 rounded-full bg-[#00F0FF] text-[#030712] font-heading font-bold text-xs uppercase tracking-wider hover:scale-105 transition-transform shadow-lg shadow-[#00F0FF]/25">
+              Обсудить проект
+            </a>
+            <a href="#portfolio" class="px-8 py-4 rounded-full border border-[#00F0FF]/40 text-[#00F0FF] font-heading font-bold text-xs uppercase tracking-wider hover:bg-[#00F0FF]/10 transition-colors">
+              Смотреть работы
+            </a>
+          </div>
+        </div>
+
+        <!-- Фотография Владислава -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-xs sm:max-w-sm">
+            <img 
+              src="preview.webp" 
+              alt="Владислав Винничек" 
+              class="w-full h-auto object-cover border border-white/10 hover:border-[#00F0FF] transition-all duration-500 shadow-2xl shadow-[#00F0FF]/10"
+              onerror="this.onerror=null; this.src='https://placehold.co/600x750/030712/FFFFFF?text=ВИННИЧЕК+ВЛАДИСЛАВ';"
+            />
+            <div class="mt-4 text-center">
+              <p class="font-heading font-bold text-sm text-[#00F0FF]"></p>
+              <p class="text-xs text-slate-400 font-mono"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= RUNNING TICKER ================= -->
+    <div class="py-4 overflow-hidden font-heading font-bold text-xs uppercase tracking-widest my-8 bg-[#00F0FF]/5 border-y border-white/10 text-[#00F0FF]">
+      <div class="flex whitespace-nowrap animate-marquee gap-8 items-center">
+        <span>• HTML5 / CSS3</span>
+        <span>• JavaScript (ES6+)</span>
+        <span>• TypeScript</span>
+        <span>• React.js / Next.js</span>
+        <span>• Tailwind CSS</span>
+        <span>• REST API / WebSockets</span>
+        <span>• Git & Webpack/Vite</span>
+        <!-- Повтор для анимации -->
+        <span>• HTML5 / CSS3</span>
+        <span>• JavaScript (ES6+)</span>
+        <span>• TypeScript</span>
+        <span>• React.js / Next.js</span>
+        <span>• Tailwind CSS</span>
+        <span>• REST API / WebSockets</span>
+        <span>• Git & Webpack/Vite</span>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT & SKILLS ================= -->
+    <section id="about" class="py-16 px-6 max-w-6xl mx-auto">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Левая колонка: текст -->
+        <div class="lg:col-span-7 space-y-8">
+          <span class="text-[#00F0FF] font-heading text-xs font-bold uppercase tracking-wider block">
+            
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-heading font-black text-white max-w-3xl leading-tight">
+            Превращаю сложные задачи в удобные интерфейсы
+          </h2>
+          <p class="text-slate-200 text-base sm:text-lg max-w-3xl leading-relaxed">
+            Специализируюсь на верстке и фронтенд-разработке веб-сайтов и приложений. Мой приоритет — чистый код, точное соответствие дизайну в Figma (Pixel Perfect) и высокая скорость загрузки страниц (Google PageSpeed 90+).
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-3 font-mono text-xs">
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">React.js</span>
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">Next.js</span>
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">TypeScript</span>
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">Tailwind CSS</span>
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">Redux Toolkit / Zustand</span>
+            <span class="px-4 py-2 rounded-full bg-[#00F0FF]/10 text-[#00F0FF] border border-[#00F0FF]/30">HTML5 / CSS3 / SASS</span>
+          </div>
+        </div>
+
+        <!-- Правая колонка: окно с кодом + показатели -->
+        <div class="lg:col-span-5 space-y-4 animate-float">
+
+          <!-- Окно редактора -->
+          <div class="rounded-2xl border border-white/10 bg-[#0A1220]/80 backdrop-blur-sm shadow-2xl shadow-[#00F0FF]/10 overflow-hidden hover:border-[#00F0FF]/50 transition-colors duration-500">
+            <div class="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.03]">
+              <span class="w-3 h-3 rounded-full bg-[#FF5F56]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
+              <span class="w-3 h-3 rounded-full bg-[#27C93F]"></span>
+              <span class="ml-3 text-[11px] font-mono text-slate-400">Developer.tsx</span>
+            </div>
+            <pre class="p-5 text-[12px] sm:text-[13px] font-mono leading-relaxed text-slate-200 overflow-x-auto"><code><span class="code-kw">const</span> <span class="code-fn">developer</span> = {
+  name: <span class="code-str">'Владислав Винничек'</span>,
+  role: <span class="code-str">'Front-end'</span>,
+  stack: [
+    <span class="code-str">'React'</span>, <span class="code-str">'Next.js'</span>,
+    <span class="code-str">'TypeScript'</span>,
+  ],
+  pixelPerfect: <span class="code-kw">true</span>,
+  pageSpeed: <span class="code-str">'90+'</span>,
+};
+
+<span class="code-cm">// готов к новым проектам</span>
+<span class="code-kw">await</span> <span class="code-fn">developer</span>.<span class="code-fn">build</span>(idea)<span class="caret ml-1"></span></code></pre>
+          </div>
+
+          <!-- Плитки с показателями -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="rounded-xl border border-white/10 bg-[#00F0FF]/5 p-4 text-center hover:border-[#00F0FF]/50 transition-colors">
+              <p class="font-heading font-black text-xl text-[#00F0FF]">90+</p>
+              <p class="mt-1 text-[10px] font-mono text-slate-400 uppercase tracking-wider">PageSpeed</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#00F0FF]/5 p-4 text-center hover:border-[#00F0FF]/50 transition-colors">
+              <p class="font-heading font-black text-xl text-[#00F0FF]">1:1</p>
+              <p class="mt-1 text-[10px] font-mono text-slate-400 uppercase tracking-wider">Figma</p>
+            </div>
+            <div class="rounded-xl border border-white/10 bg-[#00F0FF]/5 p-4 text-center hover:border-[#00F0FF]/50 transition-colors">
+              <p class="font-heading font-black text-xl text-[#00F0FF]">100%</p>
+              <p class="mt-1 text-[10px] font-mono text-slate-400 uppercase tracking-wider">Адаптив</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    
+
+    <!-- ================= PORTFOLIO ================= -->
+    
+
+    
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="py-8 border-t border-white/10 text-center text-xs font-mono text-slate-500">
+    <p>Владислав Винничек • Front-end Developer • 2026</p>
+  </footer>
+
+</body>
+</html>

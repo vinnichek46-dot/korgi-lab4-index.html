@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volkswagen Showcase | Phaeton, Passat CC & Golf VIII</title>
+    <style>
+        /* Base Beige & Soft Pastel Color Palette */
+        :root {
+            /* Beige Backgrounds */
+            --bg-page: #f8f4ee;
+            --bg-header: #fffbf5;
+            
+            /* Text & General Colors */
+            --primary-text: #2d3139;
+            --muted-text: #6b7280;
+            --border-color: #e6dfd5;
+
+            /* Phaeton Pastel Blue */
+            --phaeton-bg: #e8f1f5;
+            --phaeton-border: #d0e1eb;
+            --phaeton-accent: #2b6cb0;
+
+            /* Passat CC Pastel Green */
+            --passat-bg: #eaf2eb;
+            --passat-border: #d2e5d5;
+            --passat-accent: #2f855a;
+
+            /* Golf VIII Pastel Purple (Lilac) */
+            --golf-bg: #f3eef8;
+            --golf-border: #e2d7f0;
+            --golf-accent: #6b46c1;
+
+            /* Universal Shadows */
+            --shadow-soft: 0 10px 30px rgba(100, 80, 60, 0.06);
+            --shadow-image: 0 18px 35px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-text);
+            background-color: var(--bg-page);
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Block */
+        header {
+            background: var(--bg-header);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #2c2520;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--muted-text);
+            font-size: 1.1rem;
+        }
+
+        /* Navigation */
+        nav {
+            margin-top: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-text);
+            background: #ffffff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        nav a:hover {
+            background: #4a5568;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* General Sections */
+        section {
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-soft);
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            color: var(--primary-text);
+            border-left: 4px solid #8c7a6b;
+            padding-left: 14px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        /* Quick Overview Cards Grid */
+        .quick-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .quick-card {
+            border-radius: 18px;
+            padding: 22px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .quick-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow-image);
+        }
+
+        /* Color Theme Specifics for Phaeton (Blue) */
+        .theme-phaeton {
+            background-color: var(--phaeton-bg) !important;
+            border: 1px solid var(--phaeton-border) !important;
+        }
+        .theme-phaeton h3, .theme-phaeton summary, .theme-phaeton h4 {
+            color: var(--phaeton-accent);
+        }
+
+        /* Color Theme Specifics for Passat CC (Green) */
+        .theme-passat {
+            background-color: var(--passat-bg) !important;
+            border: 1px solid var(--passat-border) !important;
+        }
+        .theme-passat h3, .theme-passat summary, .theme-passat h4 {
+            color: var(--passat-accent);
+        }
+
+        /* Color Theme Specifics for Golf VIII (Lilac) */
+        .theme-golf {
+            background-color: var(--golf-bg) !important;
+            border: 1px solid var(--golf-border) !important;
+        }
+        .theme-golf h3, .theme-golf summary, .theme-golf h4 {
+            color: var(--golf-accent);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #f3ece2;
+            color: var(--primary-text);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            letter-spacing: 0.8px;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        caption {
+            caption-side: top;
+            text-align: left;
+            font-weight: 600;
+            color: var(--muted-text);
+            margin-bottom: 10px;
+        }
+
+        /* Images & Shadows */
+        figure {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        figure img {
+            width: 100%;
+            max-width: 550px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: var(--shadow-image);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        figure img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+        }
+
+        figcaption {
+            font-size: 0.88rem;
+            color: var(--muted-text);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Detailed Articles Styling */
+        article {
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 16px;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+        }
+
+        progress {
+            width: 130px;
+            height: 12px;
+            vertical-align: middle;
+        }
+
+        blockquote {
+            background: #fffbf5;
+            border-left: 4px solid #8c7a6b;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            font-style: italic;
+        }
+
+        blockquote footer {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--muted-text);
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+        }
+
+        ul li::before {
+            content: "•";
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--muted-text);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: var(--muted-text);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>Volkswagen Portfolio</h1>
+            
+            
+            <nav>
+                <ul>
+                    <li><a href="#quick-overview">Быстрый обзор</a></li>
+                    <li><a href="#specs">Характеристики</a></li>
+                    <li><a href="#phaeton">Phaeton</a></li>
+                    <li><a href="#passat-cc">Passat CC</a></li>
+                    <li><a href="#golf-8">Golf VIII</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Краткий обзор с пастельными карточками -->
+            <section id="quick-overview">
+                <h2>Краткий обзор модельного ряда</h2>
+                <div class="quick-preview-grid">
+                    
+                    <!-- Карточка 1: Голубой пастельный (Phaeton) -->
+                    <div class="quick-card theme-phaeton">
+                        <img src="phaton.jpg" alt="VW Phaeton Mini" class="quick-card-img">
+                        <h3>Volkswagen Phaeton</h3>
+                        <p><strong>Класс:</strong> Представительский седан</p>
+                        <p>Роскошный флагман ручной сборки.</p>
+                    </div>
+
+                    <!-- Карточка 2: Зеленый пастельный (Passat CC) -->
+                    <div class="quick-card theme-passat">
+                        <img src="CC.jpg" alt="VW Passat CC Mini" class="quick-card-img">
+                        <h3>Volkswagen Passat CC</h3>
+                        <p><strong>Класс:</strong> 4-дверное купе</p>
+                        <p>Спортивный силуэт с безрамочными дверями.</p>
+                    </div>
+
+                    <!-- Карточка 3: Лиловый пастельный (Golf VIII) -->
+                    <div class="quick-card theme-golf">
+                        <img src="pet.jpg" alt="VW Golf VIII Mini" class="quick-card-img">
+                        <h3>Volkswagen Golf VIII</h3>
+                        <p><strong>Класс:</strong> Компактный хэтчбек</p>
+                        <p>Современная городская икона.</p>
+                    </div>
+
+                </div>
+
+                <table class="mini-table">
+                    <caption>Мини-таблица: Классификация моделей</caption>
+                    <thead>
+                        <tr>
+                            <th>Модель</th>
+                            <th>Тип кузова</th>
+                            <th>Главное качество</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Volkswagen Phaeton</td>
+                            <td>Седан (F-класс)</td>
+                            <td>Тишина в салоне, ручная сборка, моторы W12/V6</td>
+                        </tr>
+                        <tr>
+                            <td>Volkswagen Passat CC</td>
+                            <td>4-дверное купе</td>
+                            <td>Стильный дизайн, безрамочные стекла</td>
+                        </tr>
+                        <tr>
+                            <td>Volkswagen Golf VIII</td>
+                            <td>Хэтчбек</td>
+                            <td>Экономичные гибриды eTSI и цифровая панель</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Сводная таблица -->
+            <section id="specs">
+                <h2>Сравнительная таблица характеристик</h2>
+                <table>
+                    <caption>Полные технические характеристики всех 3 моделей</caption>
+                    <thead>
+                        <tr>
+                            <th>Характеристика</th>
+                            <th>Volkswagen Phaeton</th>
+                            <th>Volkswagen Passat CC</th>
+                            <th>Volkswagen Golf VIII</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Тип двигателя</strong></td>
+                            <td>Бензиновый (V6, W12) / Дизельный</td>
+                            <td>Бензиновый / Дизельный</td>
+                            <td>Бензиновый / Мягкий гибрид (eTSI)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Расход топлива (смешанный)</strong></td>
+                            <td>~11.4 - 14.5 л / 100 км</td>
+                            <td>~7.3 - 8.2 л / 100 км</td>
+                            <td>~5.1 - 5.7 л / 100 км</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Тип КПП</strong></td>
+                            <td>Автоматическая (Tiptronic)</td>
+                            <td>Механическая / Роботизированная (DSG)</td>
+                            <td>Механическая / Роботизированная (DSG)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Количество передач</strong></td>
+                            <td>5 / 6 передач</td>
+                            <td>6 (МКПП) / 6 или 7 (DSG)</td>
+                            <td>6 (МКПП) / 7 (DSG)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Габариты (Д х Ш х В)</strong></td>
+                            <td>5055 x 1903 x 1450 мм</td>
+                            <td>4802 x 1855 x 1417 мм</td>
+                            <td>4284 x 1789 x 1491 мм</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Объем багажника</strong></td>
+                            <td>500 л</td>
+                            <td>532 л</td>
+                            <td>380 л</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Разгон до 100 км/ч</strong></td>
+                            <td>6.1 с (W12) / 8.4 с (V6)</td>
+                            <td>7.6 с</td>
+                            <td>8.5 с</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Максимальная скорость</strong></td>
+                            <td>250 км/ч (огр.)</td>
+                            <td>240 км/ч</td>
+                            <td>224 км/ч</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Начальная цена (на старте)</strong></td>
+                            <td>от ~90 000 €</td>
+                            <td>от ~35 000 €</td>
+                            <td>от ~28 000 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Оснащение (Wi-Fi / BT)</strong></td>
+                            <td>Bluetooth, Модуль связи</td>
+                            <td>Bluetooth, Система RNS 510</td>
+                            <td>Wi-Fi, Bluetooth, App-Connect</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Тормозная система</strong></td>
+                            <td>Дисковые вентилируемые спереди и сзади</td>
+                            <td>Дисковые вентилируемые спереди, дисковые сзади</td>
+                            <td>Дисковые вентилируемые спереди, дисковые сзади</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Гарантийный срок</strong></td>
+                            <td>2-3 года без ограничения пробега</td>
+                            <td>2 года без ограничения пробега</td>
+                            <td>3 года или 100 000 км</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Разделы с индивидуальными пастельными цветами -->
+            <section id="models-detail">
+                <h2>Детальное описание моделей</h2>
+
+                <!-- 1. Phaeton (Голубой) -->
+                <article id="phaeton" class="theme-phaeton">
+                    <h3>1. Volkswagen Phaeton</h3>
+                    <p>Флагманский представительский седан. Дата выпуска: <time datetime="2002">2002 год</time>.</p>
+
+                    <figure>
+                        <img src="phart.jpg" alt="Volkswagen Phaeton Sedan">
+                        <figcaption>Volkswagen Phaeton — ручная сборка и высший уровень инженерии.</figcaption>
+                    </figure>
+
+                    <h4>Интересные факты:</h4>
+                    <ul>
+                        <li>Собирался на прозрачной фабрике Gläserne Manufaktur в Дрездене.</li>
+                        <li>Оснащался бессквозняковой климатической системой и моторами W12.</li>
+                        <li>Кузов обладает рекордной жесткостью на скручивание.</li>
+                    </ul>
+
+                    <details>
+                        <summary>Безопасность и характеристики (Показать)</summary>
+                        <p>Пневматическая подвеска, полный привод 4MOTION, 10 подушек безопасности, ABS, ESP и адаптивный круиз-контроль.</p>
+                        <p>Оценка безопасности: 
+                            <progress value="5" max="5">5/5</progress> (5/5)
+                        </p>
+                    </details>
+                </article>
+
+                <!-- 2. Passat CC (Зеленый) -->
+                <article id="passat-cc" class="theme-passat">
+                    <h3>2. Volkswagen Passat CC</h3>
+                    <p>Четырехдверное комфортабельное купе. Дата выпуска: <time datetime="2008">2008 год</time>.</p>
+
+                    <figure>
+                        <img src="Podium cc.jpg" alt="Volkswagen Passat CC Coupe">
+                        <figcaption>Элегантные обтекаемые формы кузова Volkswagen Passat CC.</figcaption>
+                    </figure>
+
+                    <h4>Интересные факты:</h4>
+                    <ul>
+                        <li>Аббревиатура «CC» расшифровывается как Comfort Coupe.</li>
+                        <li>Боковые стекла выполнены без оконных рамок.</li>
+                        <li>Оснащен адаптивной системой управления подвеской DCC.</li>
+                    </ul>
+
+                    <details>
+                        <summary>Безопасность и характеристики (Показать)</summary>
+                        <p>Система удержания в полосе Lane Assist, ABS, ESP, 6 подушек безопасности и система контроля усталости.</p>
+                        <p>Рейтинг безопасности Euro NCAP: 
+                            <progress value="5" max="5">5/5</progress> (5 звезд)
+                        </p>
+                    </details>
+                </article>
+
+                <!-- 3. Golf VIII (Лиловый) -->
+                <article id="golf-8" class="theme-golf">
+                    <h3>3. Volkswagen Golf VIII</h3>
+                    <p>Современный хэтчбек. Дата выпуска: <time datetime="2019">2019 год</time>.</p>
+
+                    <figure>
+                        <img src="gilf.jpg" alt="Volkswagen Golf VIII Hatchback">
+                        <figcaption>Volkswagen Golf VIII — цифровая эпоха хэтчбеков.</figcaption>
+                    </figure>
+
+                    <h4>Интересные факты:</h4>
+                    <ul>
+                        <li>Поддерживает систему связи с дорожной инфраструктурой Car2X.</li>
+                        <li>Салон оборудован сенсорным кокпитом Innovision Cockpit.</li>
+                        <li>Мягкие гибридные двигатели eTSI для высокого уровня экономии.</li>
+                    </ul>
+
+                    <details>
+                        <summary>Безопасность и характеристики (Показать)</summary>
+                        <p>Комплекс Front Assist, Travel Assist для трассы, ABS, ESP и центральная подушка безопасности.</p>
+                        <p>Рейтинг безопасности Euro NCAP: 
+                            <progress value="5" max="5">5/5</progress> (5 звезд)
+                        </p>
+                    </details>
+                </article>
+            </section>
+
+            <!-- Отзывы -->
+            <section id="reviews">
+                <h2>Мнения и отзывы</h2>
+                <blockquote>
+                    <p>«Phaeton — инженерия высшего класса. Уровень тишины и комфорта сравним с лучшими представителями класса люкс.»</p>
+                    <footer>— Автомобильный обозреватель</footer>
+                </blockquote>
+                <blockquote>
+                    <p>«Passat CC поражает дизайном. Безрамочные двери делают его невероятно элегантным.»</p>
+                    <footer>— Владелец Passat CC</footer>
+                </blockquote>
+                 <blockquote>
+                    <p>«Golf VIII совершил технологический прыжок. Это полностью цифровой автомобильный опыт в компактном кузове.»</p>
+                    <footer>— Car and Driver</footer>
+                </blockquote>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; <time datetime="2026">2026</time> Volkswagen Educational Showcase. Светлое бежево-пастельное оформление.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
